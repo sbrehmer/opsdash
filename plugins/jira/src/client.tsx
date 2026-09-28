@@ -1,5 +1,5 @@
-import { type JiraIssue, StoryCell } from "@opsdash/delivery-cells";
 import { defineWidget } from "@opsdash/plugin-sdk/client";
+import { type JiraIssue, StoryCell } from "#delivery-cells";
 import css from "./list.module.css";
 
 /** Standalone Jira list (T045): one StoryCell per tracked issue. */

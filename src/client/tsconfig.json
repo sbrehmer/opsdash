@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "../../node_modules/.cache/tsc/client",
+    "rootDir": "../..",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "types": ["vite/client"]
+  },
+  "include": [".", "../../tests/client"],
+  "references": [
+    {
+      "path": "../shared"
+    },
+    {
+      "path": "../../sdk"
+    }
+  ]
+}

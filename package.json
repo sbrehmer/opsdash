@@ -2,42 +2,74 @@
   "name": "opsdash",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.34.5",
+  "packageManager": "pnpm@10.33.0",
   "engines": {
-    "node": ">=24"
+    "node": ">=24.21"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "onFail": "error"
+    }
+  },
+  "bin": {
+    "opsdash": "src/server/main.ts"
+  },
+  "imports": {
+    "#delivery-cells": "./plugin-lib/delivery-cells/index.tsx"
   },
   "scripts": {
-    "dev": "pnpm -r --parallel run dev",
-    "build": "pnpm --filter @opsdash/web --filter \"./plugins/*\" run build",
-    "start": "node packages/host/src/main.ts",
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build && node scripts/build-plugins.mjs",
+    "start": "node src/server/main.ts",
     "mock": "node scripts/opsdash.mjs start mock",
     "start:dev": "node scripts/opsdash.mjs start development",
     "start:prod": "node scripts/opsdash.mjs start production",
     "db:setup": "node scripts/opsdash.mjs db:setup",
     "db:status": "node scripts/opsdash.mjs db:status",
     "db:reset": "node scripts/opsdash.mjs db:reset",
+    "db:generate": "drizzle-kit generate",
     "config:check": "node scripts/opsdash.mjs config:check",
     "test": "vitest run",
     "test:config-errors": "vitest run --project contract config-errors reference-config",
     "test:secret-scan": "vitest run --project contract secret-scan",
     "test:e2e": "playwright test",
-    "typecheck": "pnpm -r run typecheck && tsc -p tsconfig.json",
+    "typecheck": "tsc -b",
     "lint": "biome check .",
     "size": "size-limit",
     "perf:coldstart": "node scripts/coldstart.mjs",
     "seed:delivery": "node scripts/seed-delivery.mjs"
   },
+  "dependencies": {
+    "@hono/node-server": "^2.1.1",
+    "@opsdash/plugin-sdk": "link:./sdk",
+    "@preact/signals": "^2.11.2",
+    "better-sqlite3": "^13.0.3",
+    "chokidar": "^5.0.0",
+    "drizzle-orm": "^0.45.3",
+    "hono": "^4.13.9",
+    "lru-cache": "^11.5.3",
+    "pino": "^10.3.1",
+    "preact": "^10.29.8",
+    "semver": "^7.8.5",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
+  },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@biomejs/biome": "^2.5.14",
-    "@opsdash/plugin-sdk": "workspace:*",
     "@playwright/test": "^1.63.0",
+    "@preact/preset-vite": "^2.10.6",
     "@size-limit/file": "^14.1.0",
+    "@testing-library/preact": "^3.2.4",
+    "@types/better-sqlite3": "^9.6.0",
     "@types/node": "^24.0.0",
     "@types/semver": "^7.8.0",
-    "semver": "^7.8.5",
+    "drizzle-kit": "^0.31.11",
+    "happy-dom": "^20.0.0",
     "size-limit": "^14.1.0",
     "typescript": "^7.0.2",
+    "vite": "^8.3.1",
     "vitest": "^5.0.2"
   }
 }

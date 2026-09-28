@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "../node_modules/.cache/tsc/plugins",
+    "rootDir": "..",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "types": ["vite/client", "node"]
+  },
+  "include": ["*/src", "*/tests", "../plugin-lib"],
+  "references": [
+    {
+      "path": "../sdk"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 [
   {
     "name": "web initial JS",
-    "path": "packages/web/dist/assets/*.js",
+    "path": "dist/web/assets/*.js",
     "limit": "60 KB",
     "gzip": true
   },
   {
     "name": "web CSS",
-    "path": "packages/web/dist/assets/*.css",
+    "path": "dist/web/assets/*.css",
     "limit": "15 KB",
     "gzip": true
   },

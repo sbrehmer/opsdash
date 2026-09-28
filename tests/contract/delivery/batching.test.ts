@@ -1,6 +1,6 @@
 import { MOCK_REQUESTS_KEY } from "@opsdash/plugin-sdk";
 import { afterEach, describe, expect, it } from "vitest";
-import { copyExamples, type Harness, type SseClient, sse, start } from "../../../packages/host/tests/helpers.ts";
+import { copyExamples, type Harness, type SseClient, sse, start } from "../../../tests/server/helpers.ts";
 
 const TRACKER = "delivery/tracker";
 const SOURCES = ["jira", "github", "jenkins"] as const;

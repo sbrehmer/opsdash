@@ -7,55 +7,13 @@ settings:
 importers:
 
   .:
-    devDependencies:
-      '@axe-core/playwright':
-        specifier: ^4.13.0
-        version: 4.13.0(playwright-core@1.63.0)
-      '@biomejs/biome':
-        specifier: ^2.5.14
-        version: 2.5.14
-      '@opsdash/plugin-sdk':
-        specifier: workspace:*
-        version: link:packages/plugin-sdk
-      '@playwright/test':
-        specifier: ^1.63.0
-        version: 1.63.0
-      '@size-limit/file':
-        specifier: ^14.1.0
-        version: 14.1.0(size-limit@14.1.0)
-      '@types/node':
-        specifier: ^24.0.0
-        version: 24.19.0
-      '@types/semver':
-        specifier: ^7.8.0
-        version: 7.8.0
-      semver:
-        specifier: ^7.8.5
-        version: 7.8.5
-      size-limit:
-        specifier: ^14.1.0
-        version: 14.1.0
-      typescript:
-        specifier: ^7.0.2
-        version: 7.0.2
-      vitest:
-        specifier: ^5.0.2
-        version: 5.0.2(@types/node@24.19.0)(happy-dom@20.14.5)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
-
-  packages/delivery-cells:
-    devDependencies:
-      preact:
-        specifier: ^10.29.8
-        version: 10.29.8
-
-  packages/host:
     dependencies:
       '@hono/node-server':
         specifier: ^2.1.1
         version: 2.1.1(hono@4.13.9)
       '@opsdash/plugin-sdk':
-        specifier: workspace:*
-        version: link:../plugin-sdk
+        specifier: link:./sdk
+        version: link:sdk
       '@preact/signals':
         specifier: ^2.11.2
         version: 2.11.2(preact@10.29.8)
@@ -90,130 +48,51 @@ importers:
         specifier: ^4.6.5
         version: 4.6.5
     devDependencies:
+      '@axe-core/playwright':
+        specifier: ^4.13.0
+        version: 4.13.0(playwright-core@1.63.0)
+      '@biomejs/biome':
+        specifier: ^2.5.14
+        version: 2.5.14
+      '@playwright/test':
+        specifier: ^1.63.0
+        version: 1.63.0
+      '@preact/preset-vite':
+        specifier: ^2.10.6
+        version: 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
+      '@size-limit/file':
+        specifier: ^14.1.0
+        version: 14.1.0(size-limit@14.1.0)
+      '@testing-library/preact':
+        specifier: ^3.2.4
+        version: 3.2.4(preact@10.29.8)
       '@types/better-sqlite3':
         specifier: ^9.6.0
         version: 9.6.0
+      '@types/node':
+        specifier: ^24.0.0
+        version: 24.19.0
       '@types/semver':
         specifier: ^7.8.0
         version: 7.8.0
       drizzle-kit:
         specifier: ^0.31.11
         version: 0.31.11
-
-  packages/plugin-sdk:
-    dependencies:
-      zod:
-        specifier: ^4.6.5
-        version: 4.6.5
-    devDependencies:
-      preact:
-        specifier: ^10.29.8
-        version: 10.29.8
-      vite:
-        specifier: ^8.3.1
-        version: 8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
-
-  packages/web:
-    dependencies:
-      '@opsdash/plugin-sdk':
-        specifier: workspace:*
-        version: link:../plugin-sdk
-      '@preact/signals':
-        specifier: ^2.11.2
-        version: 2.11.2(preact@10.29.8)
-      preact:
-        specifier: ^10.29.8
-        version: 10.29.8
-    devDependencies:
-      '@preact/preset-vite':
-        specifier: ^2.10.6
-        version: 2.10.6(@babel/core@7.29.7)(preact@10.29.8)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
-      '@testing-library/preact':
-        specifier: ^3.2.4
-        version: 3.2.4(preact@10.29.8)
       happy-dom:
         specifier: ^20.0.0
         version: 20.14.5
+      size-limit:
+        specifier: ^14.1.0
+        version: 14.1.0
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
       vite:
         specifier: ^8.3.1
         version: 8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
-
-  plugins/delivery:
-    dependencies:
-      '@opsdash/delivery-cells':
-        specifier: workspace:*
-        version: link:../../packages/delivery-cells
-      '@opsdash/plugin-sdk':
-        specifier: workspace:*
-        version: link:../../packages/plugin-sdk
-      preact:
-        specifier: ^10.29.8
-        version: 10.29.8
-    devDependencies:
-      vite:
-        specifier: ^8.3.1
-        version: 8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
-
-  plugins/github:
-    dependencies:
-      '@opsdash/delivery-cells':
-        specifier: workspace:*
-        version: link:../../packages/delivery-cells
-      '@opsdash/plugin-sdk':
-        specifier: workspace:*
-        version: link:../../packages/plugin-sdk
-      preact:
-        specifier: ^10.29.8
-        version: 10.29.8
-    devDependencies:
-      vite:
-        specifier: ^8.3.1
-        version: 8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
-
-  plugins/jenkins:
-    dependencies:
-      '@opsdash/delivery-cells':
-        specifier: workspace:*
-        version: link:../../packages/delivery-cells
-      '@opsdash/plugin-sdk':
-        specifier: workspace:*
-        version: link:../../packages/plugin-sdk
-      preact:
-        specifier: ^10.29.8
-        version: 10.29.8
-    devDependencies:
-      vite:
-        specifier: ^8.3.1
-        version: 8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
-
-  plugins/jira:
-    dependencies:
-      '@opsdash/delivery-cells':
-        specifier: workspace:*
-        version: link:../../packages/delivery-cells
-      '@opsdash/plugin-sdk':
-        specifier: workspace:*
-        version: link:../../packages/plugin-sdk
-      preact:
-        specifier: ^10.29.8
-        version: 10.29.8
-    devDependencies:
-      vite:
-        specifier: ^8.3.1
-        version: 8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
-
-  plugins/reference:
-    dependencies:
-      '@opsdash/plugin-sdk':
-        specifier: workspace:*
-        version: link:../../packages/plugin-sdk
-      preact:
-        specifier: ^10.29.8
-        version: 10.29.8
-    devDependencies:
-      vite:
-        specifier: ^8.3.1
-        version: 8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
+      vitest:
+        specifier: ^5.0.2
+        version: 5.0.2(@types/node@24.19.0)(happy-dom@20.14.5)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
 
 packages:
 

@@ -1,8 +1,8 @@
 import { execFileSync } from "node:child_process";
-import { cpSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { afterAll, describe, expect, it } from "vitest";
-import { type Harness, sse, start, writeConfig } from "../../packages/host/tests/helpers.ts";
+import { type Harness, sse, start, writeConfig } from "../../tests/server/helpers.ts";
 import { copyReference } from "../fixtures/plugins/variants.ts";
 import { ROOT } from "./helpers.ts";
 
@@ -14,21 +14,29 @@ afterAll(async () => {
 });
 
 describe("a copied plugin works without host changes (US8, FR-020)", () => {
-  it("builds with the SDK preset and renders next to the original", async () => {
+  it("builds in the third-party shape with the SDK preset and renders next to the original", async () => {
+    // Third-party shape (003 US4, FR-010): its own package.json with an "opsdash" field and a
+    // vite.config.ts, unlike the built-in plugins (plugin.json only). Dependencies resolve from the
+    // repository root install, like an external project that installed the SDK and Vite.
     const pluginsDir = join(WORK, "plugins");
     const copy = join(pluginsDir, "copy");
     const source = join(ROOT, "plugins/reference");
     mkdirSync(copy, { recursive: true });
-    for (const f of ["src", "package.json", "vite.config.ts"])
-      cpSync(join(source, f), join(copy, f), { recursive: true });
-    symlinkSync(join(source, "node_modules"), join(copy, "node_modules"), "dir");
-    const pkg = JSON.parse(readFileSync(join(copy, "package.json"), "utf8"));
-    pkg.name = "@acme/opsdash-copy";
-    pkg.opsdash.id = "copy";
+    cpSync(join(source, "src"), join(copy, "src"), { recursive: true });
+    const { name: _name, version: _version, ...fields } = JSON.parse(readFileSync(join(source, "plugin.json"), "utf8"));
+    const pkg = { name: "@acme/opsdash-copy", version: "1.0.0", type: "module", opsdash: { ...fields, id: "copy" } };
     writeFileSync(join(copy, "package.json"), JSON.stringify(pkg, null, 2));
+    writeFileSync(
+      join(copy, "vite.config.ts"),
+      `import { opsdashPlugin } from "@opsdash/plugin-sdk/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({ plugins: [opsdashPlugin()] });
+`,
+    );
     const client = join(copy, "src/client.tsx");
     writeFileSync(client, readFileSync(client, "utf8").replace("{item.refKey}</span>", "Copy of {item.refKey}</span>"));
-    execFileSync(process.execPath, [join(source, "node_modules/vite/bin/vite.js"), "build", "--logLevel", "error"], {
+    execFileSync(process.execPath, [join(ROOT, "node_modules/vite/bin/vite.js"), "build", "--logLevel", "error"], {
       cwd: copy,
     });
     copyReference(pluginsDir);

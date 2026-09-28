@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { type Harness, type SseClient, sse, start, writeConfig } from "../../../packages/host/tests/helpers.ts";
+import { type Harness, type SseClient, sse, start, writeConfig } from "../../../tests/server/helpers.ts";
 
 const PATH = "d/tracker";
 let h: Harness | undefined;

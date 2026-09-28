@@ -1,0 +1,37 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "../node_modules/.cache/tsc/tests",
+    "rootDir": ".."
+  },
+  "include": [
+    ".",
+    "../scripts",
+    "../vite.config.ts",
+    "../vitest.config.ts",
+    "../playwright.config.ts",
+    "../drizzle.config.ts"
+  ],
+  "exclude": ["client", ".tmp"],
+  "references": [
+    {
+      "path": "../sdk"
+    },
+    {
+      "path": "../src/shared"
+    },
+    {
+      "path": "../src/server"
+    },
+    {
+      "path": "../src/client"
+    },
+    {
+      "path": "../plugins"
+    }
+  ]
+}

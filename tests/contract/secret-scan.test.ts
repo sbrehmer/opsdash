@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { copyExamples, sse, start } from "../../packages/host/tests/helpers.ts";
+import { copyExamples, sse, start } from "../../tests/server/helpers.ts";
 import { startFakeGithub } from "./delivery/fakes/github.ts";
 
 const SECRET = "s3cr3t-value-for-scan";

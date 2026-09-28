@@ -1,15 +1,15 @@
 import { join } from "node:path";
 import { MOCK_REQUESTS_KEY, type PluginContext, SourceError } from "@opsdash/plugin-sdk";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { createLogger } from "../../../packages/host/src/log.ts";
-import { type ContextDeps, createContext } from "../../../packages/host/src/plugins/context.ts";
-import { Redactor } from "../../../packages/host/src/secrets/redact.ts";
-import { openStore } from "../../../packages/host/src/store/db.ts";
-import { createRepos, type Repos } from "../../../packages/host/src/store/repos.ts";
-import { LogCapture, tmp } from "../../../packages/host/tests/helpers.ts";
 import plugin from "../../../plugins/jira/src/server.ts";
 import { mapIssue } from "../../../plugins/jira/src/source.ts";
 import type { JiraSettings } from "../../../plugins/jira/src/types.ts";
+import { createLogger } from "../../../src/server/log.ts";
+import { type ContextDeps, createContext } from "../../../src/server/plugins/context.ts";
+import { Redactor } from "../../../src/server/secrets/redact.ts";
+import { openStore } from "../../../src/server/store/db.ts";
+import { createRepos, type Repos } from "../../../src/server/store/repos.ts";
+import { LogCapture, tmp } from "../../../tests/server/helpers.ts";
 import { type FakeJira, jiraIssues, startFakeJira } from "./fakes/jira.ts";
 
 const TOKEN = "jira-secret-token-9f3c2a";

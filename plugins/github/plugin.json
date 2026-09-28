@@ -1,0 +1,15 @@
+{
+  "name": "@opsdash/plugin-github",
+  "version": "1.0.0",
+  "id": "github",
+  "apiVersion": "^1.1.0",
+  "server": "server.js",
+  "client": "client.js",
+  "capabilities": ["track"],
+  "env": ["GITHUB_TOKEN"],
+  "refresh": {
+    "interval": "60s",
+    "timeout": "10s"
+  },
+  "maxBatchSize": 50
+}

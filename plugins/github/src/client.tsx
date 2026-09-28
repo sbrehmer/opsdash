@@ -1,5 +1,5 @@
-import { PrCell, type PullRequest } from "@opsdash/delivery-cells";
 import { defineWidget } from "@opsdash/plugin-sdk/client";
+import { PrCell, type PullRequest } from "#delivery-cells";
 import css from "./list.module.css";
 
 /** Standalone GitHub list (T046): one PrCell per tracked pull request. */

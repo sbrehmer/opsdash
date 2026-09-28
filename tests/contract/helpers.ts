@@ -1,9 +1,9 @@
 import { join } from "node:path";
-import { loadConfig } from "../../packages/host/src/config/load.ts";
-import { resolveConfig } from "../../packages/host/src/config/resolve.ts";
-import { createLogger } from "../../packages/host/src/log.ts";
-import { PluginRegistry } from "../../packages/host/src/plugins/registry.ts";
-import { Redactor } from "../../packages/host/src/secrets/redact.ts";
+import { loadConfig } from "../../src/server/config/load.ts";
+import { resolveConfig } from "../../src/server/config/resolve.ts";
+import { createLogger } from "../../src/server/log.ts";
+import { PluginRegistry } from "../../src/server/plugins/registry.ts";
+import { Redactor } from "../../src/server/secrets/redact.ts";
 
 export const ROOT = join(import.meta.dirname, "../..");
 

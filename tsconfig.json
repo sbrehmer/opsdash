@@ -1,4 +1,23 @@
 {
-  "extends": "./tsconfig.base.json",
-  "include": ["tests", "vitest.config.ts", "playwright.config.ts", "scripts"]
+  "files": [],
+  "references": [
+    {
+      "path": "sdk"
+    },
+    {
+      "path": "src/shared"
+    },
+    {
+      "path": "src/server"
+    },
+    {
+      "path": "src/client"
+    },
+    {
+      "path": "plugins"
+    },
+    {
+      "path": "tests"
+    }
+  ]
 }

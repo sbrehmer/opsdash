@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // One entry point per environment: resolves the config template, database and secrets for an environment,
-// sets up the database, and starts Opsdash. Used by the npm scripts (pnpm mock, start:dev, start:prod, db:*).
+// sets up the database, and starts Opsdash. Used by the package scripts (pnpm mock, start:dev, start:prod, db:*).
 //
 //   node scripts/opsdash.mjs start <env> [--port N] [--no-seed]
 //   node scripts/opsdash.mjs db:setup|db:status|db:reset <env> [--force]
@@ -15,7 +15,7 @@ import { parseArgs } from "node:util";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const node = process.execPath;
-const HOST = join(ROOT, "packages/host/src");
+const HOST = join(ROOT, "src/server");
 
 const argv = process.argv.slice(2);
 if (argv[0] === "--") argv.shift();
@@ -74,14 +74,26 @@ function dbCommand(cmd) {
   return run(args);
 }
 
+/** Warns about leftovers of the pre-003 layout (per-package installs), which can shadow the root install. */
+function warnStaleLayout() {
+  const pluginsDir = join(ROOT, "plugins");
+  const stale = existsSync(join(ROOT, "packages")) ? ["packages/"] : [];
+  if (existsSync(pluginsDir) && readdirSync(pluginsDir).some((p) => existsSync(join(pluginsDir, p, "node_modules")))) {
+    stale.push("plugins/*/node_modules");
+  }
+  if (stale.length === 0) return;
+  console.warn(`Found files from the old layout (${stale.join(", ")}).
+Remove them and reinstall: rm -rf packages plugins/*/node_modules node_modules && pnpm install. See MIGRATION.md.`);
+}
+
 function checkBuilt() {
+  warnStaleLayout();
   const missing = [];
-  if (!existsSync(join(ROOT, "packages/web/dist/index.html"))) missing.push("packages/web");
+  if (!existsSync(join(ROOT, "dist/web/index.html"))) missing.push("web");
   for (const p of readdirSync(env.plugins)) {
     const dir = join(env.plugins, p);
-    if (existsSync(join(dir, "package.json")) && !existsSync(join(dir, "dist/opsdash.manifest.json"))) {
-      missing.push(rel(dir));
-    }
+    const isPlugin = existsSync(join(dir, "plugin.json")) || existsSync(join(dir, "package.json"));
+    if (isPlugin && !existsSync(join(dir, "dist/opsdash.manifest.json"))) missing.push(rel(dir));
   }
   if (missing.length > 0) {
     console.error(`Not built yet: ${missing.join(", ")}. Run \`pnpm build\` first.`);
@@ -135,13 +147,13 @@ async function start() {
 }
 
 async function configCheck() {
-  const { loadConfig } = await import("../packages/host/src/config/load.ts");
-  const { resolveConfig } = await import("../packages/host/src/config/resolve.ts");
-  const { formatError } = await import("../packages/host/src/config/errors.ts");
-  const { PluginRegistry } = await import("../packages/host/src/plugins/registry.ts");
-  const { createLogger } = await import("../packages/host/src/log.ts");
-  const { Redactor } = await import("../packages/host/src/secrets/redact.ts");
-  const { loadEnv } = await import("../packages/host/src/secrets/env.ts");
+  const { loadConfig } = await import("../src/server/config/load.ts");
+  const { resolveConfig } = await import("../src/server/config/resolve.ts");
+  const { formatError } = await import("../src/server/config/errors.ts");
+  const { PluginRegistry } = await import("../src/server/plugins/registry.ts");
+  const { createLogger } = await import("../src/server/log.ts");
+  const { Redactor } = await import("../src/server/secrets/redact.ts");
+  const { loadEnv } = await import("../src/server/secrets/env.ts");
   const redactor = new Redactor();
   const registry = new PluginRegistry(env.plugins, createLogger(redactor, { write() {} }));
   await registry.loadAll();

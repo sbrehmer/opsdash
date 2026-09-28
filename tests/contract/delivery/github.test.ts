@@ -1,15 +1,15 @@
 import { join } from "node:path";
 import { type PluginContext, SourceError } from "@opsdash/plugin-sdk";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { createLogger } from "../../../packages/host/src/log.ts";
-import { type ContextDeps, createContext } from "../../../packages/host/src/plugins/context.ts";
-import { Redactor } from "../../../packages/host/src/secrets/redact.ts";
-import { openStore } from "../../../packages/host/src/store/db.ts";
-import { createRepos } from "../../../packages/host/src/store/repos.ts";
-import { tmp } from "../../../packages/host/tests/helpers.ts";
 import { buildPrQuery, mapPrNode } from "../../../plugins/github/src/query.ts";
 import plugin from "../../../plugins/github/src/server.ts";
 import type { GithubPr, GithubRef, GithubSettings } from "../../../plugins/github/src/types.ts";
+import { createLogger } from "../../../src/server/log.ts";
+import { type ContextDeps, createContext } from "../../../src/server/plugins/context.ts";
+import { Redactor } from "../../../src/server/secrets/redact.ts";
+import { openStore } from "../../../src/server/store/db.ts";
+import { createRepos } from "../../../src/server/store/repos.ts";
+import { tmp } from "../../../tests/server/helpers.ts";
 import { type FakeGithub, type FakePr, startFakeGithub } from "./fakes/github.ts";
 
 const TOKEN = "ghp_contractTestToken0123456789";

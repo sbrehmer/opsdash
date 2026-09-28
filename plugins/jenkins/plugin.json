@@ -1,0 +1,14 @@
+{
+  "name": "@opsdash/plugin-jenkins",
+  "version": "1.0.0",
+  "id": "jenkins",
+  "apiVersion": "^1.1.0",
+  "server": "server.js",
+  "client": "client.js",
+  "capabilities": ["track"],
+  "env": ["JENKINS_TOKEN"],
+  "refresh": {
+    "interval": "60s",
+    "timeout": "10s"
+  }
+}

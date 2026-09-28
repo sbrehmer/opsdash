@@ -11,8 +11,7 @@ export default defineConfig({
     launchOptions: process.env.OPSDASH_CHROMIUM ? { executablePath: process.env.OPSDASH_CHROMIUM } : {},
   },
   webServer: {
-    command:
-      "node packages/host/src/main.ts --config .data/e2e-config --plugins plugins --db .data/e2e.db --mock --port 4411",
+    command: "node src/server/main.ts --config .data/e2e-config --plugins plugins --db .data/e2e.db --mock --port 4411",
     url: "http://localhost:4411/healthz",
     reuseExistingServer: false,
     timeout: 30000,

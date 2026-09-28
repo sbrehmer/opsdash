@@ -4,13 +4,13 @@ import { pathToFileURL } from "node:url";
 import { type DefinedPlugin, MOCK_REQUESTS_KEY, PLUGIN_API_VERSION, type PluginContext } from "@opsdash/plugin-sdk";
 import semver from "semver";
 import { beforeAll, describe, expect, it } from "vitest";
-import { createLogger } from "../../packages/host/src/log.ts";
-import { type ContextDeps, createContext } from "../../packages/host/src/plugins/context.ts";
-import { checkManifest } from "../../packages/host/src/plugins/manifest.ts";
-import { Redactor } from "../../packages/host/src/secrets/redact.ts";
-import { openStore } from "../../packages/host/src/store/db.ts";
-import { createRepos, type Repos } from "../../packages/host/src/store/repos.ts";
-import { tmp } from "../../packages/host/tests/helpers.ts";
+import { createLogger } from "../../src/server/log.ts";
+import { type ContextDeps, createContext } from "../../src/server/plugins/context.ts";
+import { checkManifest } from "../../src/server/plugins/manifest.ts";
+import { Redactor } from "../../src/server/secrets/redact.ts";
+import { openStore } from "../../src/server/store/db.ts";
+import { createRepos, type Repos } from "../../src/server/store/repos.ts";
+import { tmp } from "../../tests/server/helpers.ts";
 import { ROOT } from "./helpers.ts";
 
 const DIR = join(ROOT, "plugins/reference");
@@ -43,8 +43,8 @@ describe("plugin API contract v1 against the reference plugin (FR-044)", () => {
     expect(m).toMatchObject({ id: "reference", hasMock: true, capabilities: ["track"], env: ["REFERENCE_TOKEN"] });
     expect(m!.settingsSchema).toMatchObject({ type: "object" });
     expect(m!.referenceSchema).toMatchObject({ type: "object" });
-    const pkg = JSON.parse(readFileSync(join(DIR, "package.json"), "utf8"));
-    expect(m!.version).toBe(pkg.version);
+    const source = JSON.parse(readFileSync(join(DIR, "plugin.json"), "utf8"));
+    expect(m!.version).toBe(source.version);
   });
 
   it("validates settings, references and ref keys", () => {

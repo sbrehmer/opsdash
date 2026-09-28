@@ -1,15 +1,15 @@
 import { type PluginContext, SourceError } from "@opsdash/plugin-sdk";
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
-import { createLogger } from "../../../packages/host/src/log.ts";
-import { type ContextDeps, createContext } from "../../../packages/host/src/plugins/context.ts";
-import { Redactor } from "../../../packages/host/src/secrets/redact.ts";
-import { openStore } from "../../../packages/host/src/store/db.ts";
-import { createRepos } from "../../../packages/host/src/store/repos.ts";
-import { tmp } from "../../../packages/host/tests/helpers.ts";
 import { parseJenkinsInput } from "../../../plugins/jenkins/src/parse.ts";
 import { jobPath, pipelineFor, repoFor, TREE } from "../../../plugins/jenkins/src/paths.ts";
 import plugin from "../../../plugins/jenkins/src/server.ts";
 import type { JenkinsJob, JenkinsRef } from "../../../plugins/jenkins/src/types.ts";
+import { createLogger } from "../../../src/server/log.ts";
+import { type ContextDeps, createContext } from "../../../src/server/plugins/context.ts";
+import { Redactor } from "../../../src/server/secrets/redact.ts";
+import { openStore } from "../../../src/server/store/db.ts";
+import { createRepos } from "../../../src/server/store/repos.ts";
+import { tmp } from "../../../tests/server/helpers.ts";
 import { type FakeJenkins, type FakeJob, startFakeJenkins } from "./fakes/jenkins.ts";
 
 const TOKEN = "jenkins-secret-token-1234";

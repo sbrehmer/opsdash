@@ -1,7 +1,7 @@
-import type { CellItem, JenkinsJob, JiraIssue, PullRequest } from "@opsdash/delivery-cells";
-import { BuildCell, PrCell, RelativeTime, StoryCell } from "@opsdash/delivery-cells";
 import { defineWidget, type WidgetProps } from "@opsdash/plugin-sdk/client";
 import { useState } from "preact/hooks";
+import type { CellItem, JenkinsJob, JiraIssue, PullRequest } from "#delivery-cells";
+import { BuildCell, PrCell, RelativeTime, StoryCell } from "#delivery-cells";
 import { buildRows, groupRows, type Item, isDone, type Row, sortRows, storyKeys } from "./rows.ts";
 import css from "./tracker.module.css";
 

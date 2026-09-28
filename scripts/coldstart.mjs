@@ -11,7 +11,7 @@ const started = performance.now();
 const child = spawn(
   process.execPath,
   [
-    "packages/host/src/main.ts",
+    "src/server/main.ts",
     "--config",
     "examples/config",
     "--plugins",

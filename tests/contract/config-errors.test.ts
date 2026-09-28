@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { writeConfig } from "../../packages/host/tests/helpers.ts";
+import { writeConfig } from "../../tests/server/helpers.ts";
 import { ROOT, resolveDir } from "./helpers.ts";
 
 const FIXTURES = join(ROOT, "tests/fixtures/invalid-config");

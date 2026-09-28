@@ -1,8 +1,8 @@
 import { spawnSync } from "node:child_process";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { checkManifest } from "../../../packages/host/src/plugins/manifest.ts";
-import { type Harness, sse, start, tmp, writeConfig } from "../../../packages/host/tests/helpers.ts";
+import { checkManifest } from "../../../src/server/plugins/manifest.ts";
+import { type Harness, sse, start, tmp, writeConfig } from "../../../tests/server/helpers.ts";
 import { type Api11Probe, resetProbe, writeApi11Plugins } from "../../fixtures/plugins/api11.ts";
 import { copyReference } from "../../fixtures/plugins/variants.ts";
 import { ROOT } from "../helpers.ts";

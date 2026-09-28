@@ -1,5 +1,5 @@
-import { BuildCell, type JenkinsJob, RelativeTime } from "@opsdash/delivery-cells";
 import { defineWidget } from "@opsdash/plugin-sdk/client";
+import { BuildCell, type JenkinsJob, RelativeTime } from "#delivery-cells";
 import css from "./list.module.css";
 
 /** Standalone Jenkins list (T047): one BuildCell per tracked job, plus the main branch's last success. */

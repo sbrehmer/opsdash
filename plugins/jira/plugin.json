@@ -1,0 +1,15 @@
+{
+  "name": "@opsdash/plugin-jira",
+  "version": "1.0.0",
+  "id": "jira",
+  "apiVersion": "^1.1.0",
+  "server": "server.js",
+  "client": "client.js",
+  "capabilities": ["track"],
+  "env": ["JIRA_TOKEN"],
+  "refresh": {
+    "interval": "60s",
+    "timeout": "10s"
+  },
+  "maxBatchSize": 100
+}

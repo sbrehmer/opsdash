@@ -1,2 +1,4 @@
 [tools]
 node = "24.21.0"
+# From npm (runs on the pinned Node), so it works on musl as well as glibc.
+"npm:pnpm" = "10.33.0"

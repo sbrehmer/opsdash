@@ -6,13 +6,19 @@ source.
 
 ## Quick start
 
-Requires Node.js 24 and pnpm 10 (`corepack enable`).
+Requires [mise](https://mise.jdx.dev), which installs the pinned Node.js and pnpm from `mise.toml`.
+Where no prebuilt SQLite binary exists for your platform, you also need a C/C++ toolchain and Python.
 
 ```bash
+mise install         # Node.js 24.21 and pnpm 10.33 from mise.toml
 pnpm install
 pnpm build
 pnpm mock            # mock mode: no source systems or credentials, sample rows on first start
 ```
+
+If you used `corepack enable` before, run `corepack disable` once so that mise's pnpm is used.
+Without mise, install Node.js 24.21 and pnpm 10.33.0 yourself. `pnpm install` refuses other Node
+versions, and `npm install` is refused outright.
 
 Then open http://localhost:4400.
 
@@ -142,22 +148,46 @@ named `PR-<number>` and a main-branch job.
 ## Development
 
 ```bash
-pnpm dev            # Vite HMR on :5173 (proxying the host on :4400), host restarts on its own
-                    # source changes, plugins rebuild and hot-reload without a host restart
+pnpm dev            # one terminal: Vite HMR on :5173 (proxying the host on :4400), the host restarts
+                    # on its own source changes, plugins rebuild and hot-reload without a host restart
 pnpm test           # unit, integration and contract tests (all run in mock mode)
 pnpm test:e2e       # Playwright + axe (set OPSDASH_CHROMIUM to a system Chromium on Alpine/musl)
 pnpm typecheck && pnpm lint && pnpm size && pnpm perf:coldstart
 ```
 
-Writing a plugin? See [`packages/plugin-sdk/README.md`](packages/plugin-sdk/README.md).
+Writing a plugin? See [`sdk/README.md`](sdk/README.md). A built-in plugin is a folder under `plugins/`
+with `src/` and a `plugin.json`, and `pnpm build` builds it with no further setup.
+
+Coming from the old `packages/` layout? See [`MIGRATION.md`](MIGRATION.md).
 
 ## Repository layout
 
+One application (`src/`) next to the plugin SDK and the plugins, all installed from the root
+`package.json`:
+
 ```text
-packages/host        Node server: config, plugins, refresh scheduler, SQLite store, HTTP + SSE
-packages/web         Vite + Preact UI
-packages/plugin-sdk  Plugin API types, mock helpers, Vite preset
-plugins/reference    Reference plugin (simulated source)
-examples/config      Example configuration
+src/
+  server/            Node server: config loading, plugin lifecycle, refresh cycle, SQLite store, HTTP + SSE
+  client/            Browser UI (Vite + Preact): dashboards, grid, theming, widget frames
+  shared/            Types of the payloads exchanged between server and client
+sdk/                 @opsdash/plugin-sdk: plugin API types, mock helpers, Vite preset
+plugin-lib/          UI shared by several plugins (delivery cells, imported as #delivery-cells)
+plugins/<id>/        One folder per plugin: src/, plugin.json (manifest), optional tests/; dist/ is built
+drizzle/             SQLite migrations (applied automatically at startup)
+tests/               server/, client/ (unit and integration), contract/, e2e/, fixtures/
+scripts/             Launcher (opsdash.mjs), build-plugins.mjs, dev.mjs, budget checks
+config/  examples/   Environment configs and example configuration
 specs/               Spec Kit feature specs, plans and contracts
 ```
+
+Where to find things:
+
+- Config validation: `src/server/config/`
+- Plugin loading and manifests: `src/server/plugins/`
+- The refresh cycle and batching: `src/server/refresh/`
+- Storage: `src/server/store/`
+- The dashboard grid: `src/client/grid/`
+
+The layers are enforced by `pnpm typecheck` (TypeScript project references). Browser code
+(`src/client`) can't import `src/server`, and plugins can only reach the host through
+`@opsdash/plugin-sdk`.

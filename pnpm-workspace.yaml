@@ -1,6 +1,4 @@
-packages:
-  - packages/*
-  - plugins/*
 onlyBuiltDependencies:
   - better-sqlite3
   - esbuild
+engineStrict: true
