@@ -10,10 +10,11 @@ plugin API are unchanged.
 ```bash
 rm -rf packages plugins/*/node_modules node_modules
 corepack disable    # removes corepack's pnpm link from Node's bin/, which would shadow mise's pnpm
-mise install        # now also installs the pinned pnpm (no more corepack enable)
-pnpm install
-pnpm build
+mise run mock       # installs the pinned tools and dependencies, builds, and starts
 ```
+
+The start commands (`mise run …` or `pnpm mock`/`start:*`) install and build as needed, so
+`pnpm install` and `pnpm build` are no longer separate steps.
 
 Existing databases keep working: the migration files moved to `drizzle/` unchanged.
 

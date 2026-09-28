@@ -3,8 +3,11 @@
 // server on :4400), and plugin watch builds, in one terminal. Ctrl-C, or any process exiting, stops all.
 import { spawn } from "node:child_process";
 import { join, resolve } from "node:path";
+import { prepare } from "./prepare.mjs";
 
 const ROOT = resolve(import.meta.dirname, "..");
+// The watchers build everything themselves; only the tools and dependencies must be in place.
+prepare({ build: false });
 const node = process.execPath;
 
 const processes = {

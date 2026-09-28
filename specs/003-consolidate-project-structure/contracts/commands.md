@@ -31,3 +31,19 @@ prints a warning and keeps going:
 Found files from the old layout (packages/, plugins/*/node_modules).
 Remove them and reinstall: rm -rf packages plugins/*/node_modules node_modules && pnpm install. See MIGRATION.md.
 ```
+
+## Self-preparing start commands (amended 2026-09-28)
+
+`pnpm mock`, `start:dev`, `start:prod`, `db:*`, `config:check` and `pnpm dev` now call
+`scripts/prepare.mjs` before doing anything else. It:
+
+- runs `mise install` (when mise is available) and runs pnpm through `mise exec`;
+- runs `pnpm install --frozen-lockfile` when `node_modules` is missing, or when the hash of
+  `package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `sdk/package.json` or `mise.toml`
+  changed;
+- runs `pnpm build` when the build output is missing, or when the hash of its sources changed.
+  Database commands and `pnpm dev` skip this step.
+
+The same start commands are also mise tasks (`mise run mock`, `start:dev`, `start:prod`, `dev`).
+mise installs missing tools before it runs a task, so on a new machine `mise run mock` is the only
+command needed. When nothing changed, the check takes about 0.1 s.

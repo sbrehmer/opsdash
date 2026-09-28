@@ -2,3 +2,21 @@
 node = "24.21.0"
 # From npm (runs on the pinned Node), so it works on musl as well as glibc.
 "npm:pnpm" = "10.33.0"
+
+# Entry points that need nothing but mise: `mise run mock`. Each one installs the pinned tools,
+# dependencies and build first when they are missing or out of date (scripts/prepare.mjs).
+[tasks.mock]
+description = "Start in mock mode (no source systems or credentials)"
+run = "node scripts/opsdash.mjs start mock"
+
+[tasks."start:dev"]
+description = "Start the development environment"
+run = "node scripts/opsdash.mjs start development"
+
+[tasks."start:prod"]
+description = "Start the production environment"
+run = "node scripts/opsdash.mjs start production"
+
+[tasks.dev]
+description = "Server, Vite HMR and plugin watch builds in one terminal"
+run = "node scripts/dev.mjs"

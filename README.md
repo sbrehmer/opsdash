@@ -10,15 +10,18 @@ Requires [mise](https://mise.jdx.dev), which installs the pinned Node.js and pnp
 Where no prebuilt SQLite binary exists for your platform, you also need a C/C++ toolchain and Python.
 
 ```bash
-mise install         # Node.js 24.21 and pnpm 10.33 from mise.toml
-pnpm install
-pnpm build
-pnpm mock            # mock mode: no source systems or credentials, sample rows on first start
+mise run mock        # mock mode: no source systems or credentials, sample rows on first start
 ```
 
-If you used `corepack enable` before, run `corepack disable` once so that mise's pnpm is used.
-Without mise, install Node.js 24.21 and pnpm 10.33.0 yourself. `pnpm install` refuses other Node
-versions, and `npm install` is refused outright.
+That's the only command. Every start command first brings the checkout up to date. It installs the
+pinned Node.js and pnpm (`mise install`), installs dependencies when `package.json` or the lockfile
+changed, and rebuilds the web UI and plugins when their sources changed. When nothing changed, these
+checks add well under a second.
+
+The same start commands also exist as `pnpm mock`, `pnpm start:dev` and so on, and prepare the
+checkout the same way. If you used `corepack enable` before, run `corepack disable` once so that
+mise's pnpm is used. Without mise, install Node.js 24.21 and pnpm 10.33.0 yourself. `pnpm install`
+refuses other Node versions, and `npm install` is refused outright.
 
 Then open http://localhost:4400.
 
@@ -28,13 +31,14 @@ Each environment has a config template in `config/` that shares the dashboards i
 
 | Environment | Config | Secrets | Start |
 |-------------|--------|---------|-------|
-| mock | `config/mock.yaml` | none | `pnpm mock` |
-| development | `config/development.yaml` | `config/env/development.env` (copy the `.example`) | `pnpm start:dev` |
-| production | `config/production.yaml` | `config/env/production.env`, or the service environment | `pnpm start:prod` |
+| mock | `config/mock.yaml` | none | `mise run mock` or `pnpm mock` |
+| development | `config/development.yaml` | `config/env/development.env` (copy the `.example`) | `mise run start:dev` or `pnpm start:dev` |
+| production | `config/production.yaml` | `config/env/production.env`, or the service environment | `mise run start:prod` or `pnpm start:prod` |
 
 Every start command:
 
-1. checks that the web UI and plugins are built;
+1. installs the pinned tools and the dependencies, and builds the web UI and plugins, when any of
+   them is missing or out of date (`scripts/prepare.mjs`);
 2. creates or migrates the environment's database (`.data/<env>.db`);
 3. loads the env file if it exists, and starts the server.
 

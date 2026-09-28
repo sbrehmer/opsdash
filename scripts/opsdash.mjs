@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // One entry point per environment: resolves the config template, database and secrets for an environment,
-// sets up the database, and starts Opsdash. Used by the package scripts (pnpm mock, start:dev, start:prod, db:*).
+// sets up the database, and starts Opsdash. Used by the package scripts (pnpm mock, start:dev, start:prod, db:*)
+// and the mise tasks. Each command first installs the pinned tools, dependencies and build as needed
+// (scripts/prepare.mjs).
 //
 //   node scripts/opsdash.mjs start <env> [--port N] [--no-seed]
 //   node scripts/opsdash.mjs db:setup|db:status|db:reset <env> [--force]
@@ -12,6 +14,7 @@ import { spawn, spawnSync } from "node:child_process";
 import { existsSync, readdirSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { parseArgs } from "node:util";
+import { prepare } from "./prepare.mjs";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const node = process.execPath;
@@ -69,34 +72,22 @@ function run(args) {
 }
 
 function dbCommand(cmd) {
+  prepare({ build: false });
   const args = [join(HOST, "db-cli.ts"), cmd, "--db", env.db];
   if (values.force) args.push("--force");
   return run(args);
 }
 
-/** Warns about leftovers of the pre-003 layout (per-package installs), which can shadow the root install. */
-function warnStaleLayout() {
-  const pluginsDir = join(ROOT, "plugins");
-  const stale = existsSync(join(ROOT, "packages")) ? ["packages/"] : [];
-  if (existsSync(pluginsDir) && readdirSync(pluginsDir).some((p) => existsSync(join(pluginsDir, p, "node_modules")))) {
-    stale.push("plugins/*/node_modules");
-  }
-  if (stale.length === 0) return;
-  console.warn(`Found files from the old layout (${stale.join(", ")}).
-Remove them and reinstall: rm -rf packages plugins/*/node_modules node_modules && pnpm install. See MIGRATION.md.`);
-}
-
-function checkBuilt() {
-  warnStaleLayout();
-  const missing = [];
-  if (!existsSync(join(ROOT, "dist/web/index.html"))) missing.push("web");
-  for (const p of readdirSync(env.plugins)) {
-    const dir = join(env.plugins, p);
-    const isPlugin = existsSync(join(dir, "plugin.json")) || existsSync(join(dir, "package.json"));
-    if (isPlugin && !existsSync(join(dir, "dist/opsdash.manifest.json"))) missing.push(rel(dir));
-  }
+/** A plugin directory outside the repository is not built by `prepare`; its plugins must be built already. */
+function checkPluginsBuilt() {
+  if (env.plugins === join(ROOT, "plugins")) return;
+  const missing = readdirSync(env.plugins)
+    .map((p) => join(env.plugins, p))
+    .filter((dir) => existsSync(join(dir, "plugin.json")) || existsSync(join(dir, "package.json")))
+    .filter((dir) => !existsSync(join(dir, "dist/opsdash.manifest.json")))
+    .map(rel);
   if (missing.length > 0) {
-    console.error(`Not built yet: ${missing.join(", ")}. Run \`pnpm build\` first.`);
+    console.error(`Not built yet: ${missing.join(", ")}. Build these plugins before starting.`);
     process.exit(1);
   }
 }
@@ -114,7 +105,8 @@ async function waitHealthy(url, timeoutMs = 15_000) {
 }
 
 async function start() {
-  checkBuilt();
+  prepare();
+  checkPluginsBuilt();
   const fresh = !existsSync(env.db);
   if (dbCommand("setup") !== 0) process.exit(1);
 
@@ -147,6 +139,7 @@ async function start() {
 }
 
 async function configCheck() {
+  prepare();
   const { loadConfig } = await import("../src/server/config/load.ts");
   const { resolveConfig } = await import("../src/server/config/resolve.ts");
   const { formatError } = await import("../src/server/config/errors.ts");
