@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 3,
+  "column": 14,
+  "path": "plugins.reference.version",
+  "messageIncludes": "Missing required field \"version\""
+}

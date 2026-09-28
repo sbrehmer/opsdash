@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 4,
+  "column": 14,
+  "path": "plugins.reference.version",
+  "messageIncludes": "Expected a semver range"
+}

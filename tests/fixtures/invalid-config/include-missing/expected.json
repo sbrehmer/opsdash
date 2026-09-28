@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 2,
+  "column": 11,
+  "path": "include[0]",
+  "messageIncludes": "Included file \"nope.yaml\" does not exist."
+}

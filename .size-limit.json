@@ -1,0 +1,44 @@
+[
+  {
+    "name": "web initial JS",
+    "path": "packages/web/dist/assets/*.js",
+    "limit": "60 KB",
+    "gzip": true
+  },
+  {
+    "name": "web CSS",
+    "path": "packages/web/dist/assets/*.css",
+    "limit": "15 KB",
+    "gzip": true
+  },
+  {
+    "name": "reference plugin client",
+    "path": "plugins/reference/dist/client.js",
+    "limit": "10 KB",
+    "gzip": true
+  },
+  {
+    "name": "jira plugin client",
+    "path": "plugins/jira/dist/client.js",
+    "limit": "15 KB",
+    "gzip": true
+  },
+  {
+    "name": "github plugin client",
+    "path": "plugins/github/dist/client.js",
+    "limit": "15 KB",
+    "gzip": true
+  },
+  {
+    "name": "jenkins plugin client",
+    "path": "plugins/jenkins/dist/client.js",
+    "limit": "15 KB",
+    "gzip": true
+  },
+  {
+    "name": "delivery plugin client",
+    "path": "plugins/delivery/dist/client.js",
+    "limit": "20 KB",
+    "gzip": true
+  }
+]

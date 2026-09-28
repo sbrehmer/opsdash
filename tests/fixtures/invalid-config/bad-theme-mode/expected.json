@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 8,
+  "column": 20,
+  "path": "dashboards[0].theme.mode",
+  "messageIncludes": "\"mode\" must be one of: \"light\", \"dark\", \"system\""
+}

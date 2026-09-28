@@ -1,0 +1,8 @@
+version: 1
+plugins:
+  reference: {}
+dashboards:
+  - id: main
+    title: Main
+    items:
+      - { id: a, plugin: reference, at: [1, 1], size: [6, 2] }

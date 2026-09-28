@@ -1,0 +1,7 @@
+{
+  "file": "more.yaml",
+  "line": 3,
+  "column": 5,
+  "path": "blocks.panel",
+  "messageIncludes": "Duplicate block name \"panel\""
+}

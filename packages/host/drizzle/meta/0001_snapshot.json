@@ -1,0 +1,219 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "b47b965a-024f-49a2-963c-87b02d94b9cd",
+  "prevId": "2b4022a5-98fc-4e0f-9f10-a36b2cf5b984",
+  "tables": {
+    "plugin_state": {
+      "name": "plugin_state",
+      "columns": {
+        "plugin_id": {
+          "name": "plugin_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "key": {
+          "name": "key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "plugin_state_plugin_id_key_pk": {
+          "columns": [
+            "plugin_id",
+            "key"
+          ],
+          "name": "plugin_state_plugin_id_key_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "ref_link": {
+      "name": "ref_link",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "from_ref_id": {
+          "name": "from_ref_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "to_ref_id": {
+          "name": "to_ref_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_by": {
+          "name": "created_by",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "ref_link_pair": {
+          "name": "ref_link_pair",
+          "columns": [
+            "from_ref_id",
+            "to_ref_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "ref_link_from_ref_id_tracked_ref_id_fk": {
+          "name": "ref_link_from_ref_id_tracked_ref_id_fk",
+          "tableFrom": "ref_link",
+          "tableTo": "tracked_ref",
+          "columnsFrom": [
+            "from_ref_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "ref_link_to_ref_id_tracked_ref_id_fk": {
+          "name": "ref_link_to_ref_id_tracked_ref_id_fk",
+          "tableFrom": "ref_link",
+          "tableTo": "tracked_ref",
+          "columnsFrom": [
+            "to_ref_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "ref_link_not_self": {
+          "name": "ref_link_not_self",
+          "value": "\"ref_link\".\"from_ref_id\" != \"ref_link\".\"to_ref_id\""
+        }
+      }
+    },
+    "tracked_ref": {
+      "name": "tracked_ref",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "widget_path": {
+          "name": "widget_path",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "plugin_id": {
+          "name": "plugin_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ref_key": {
+          "name": "ref_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ref": {
+          "name": "ref",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "tracked_ref_widget": {
+          "name": "tracked_ref_widget",
+          "columns": [
+            "widget_path"
+          ],
+          "isUnique": false
+        },
+        "tracked_ref_widget_plugin_key": {
+          "name": "tracked_ref_widget_plugin_key",
+          "columns": [
+            "widget_path",
+            "plugin_id",
+            "ref_key"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}

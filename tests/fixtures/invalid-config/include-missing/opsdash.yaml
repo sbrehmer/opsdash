@@ -1,0 +1,10 @@
+version: 1
+include: [nope.yaml]
+plugins:
+  reference:
+    version: "^1.0.0"
+dashboards:
+  - id: main
+    title: Main
+    items:
+      - { id: a, plugin: reference, at: [1, 1], size: [6, 2] }

@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 10,
+  "column": 9,
+  "path": "dashboards[1].id",
+  "messageIncludes": "Duplicate dashboard id \"main\""
+}

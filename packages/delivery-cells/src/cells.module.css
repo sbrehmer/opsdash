@@ -1,0 +1,114 @@
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--od-space-unit) * 0.5);
+  min-width: 0;
+}
+.line,
+.meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: calc(var(--od-space-unit) * 1.5);
+  min-width: 0;
+}
+.line {
+  flex-wrap: nowrap;
+}
+.meta {
+  font-size: 0.875em;
+}
+.link {
+  color: var(--od-color-accent);
+  text-decoration: none;
+}
+.link:hover,
+.link:focus-visible {
+  text-decoration: underline;
+}
+.key {
+  flex: none;
+  font-family: var(--od-font-family-mono);
+}
+.title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--od-color-text);
+}
+.muted {
+  color: var(--od-color-text-muted);
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--od-space-unit) * 0.75);
+  color: var(--od-color-text);
+  white-space: nowrap;
+}
+.dot {
+  flex: none;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: var(--od-color-text-muted);
+}
+.toneOk .dot {
+  background: var(--od-color-ok);
+}
+.toneWarn .dot {
+  background: var(--od-color-warn);
+}
+.toneError .dot {
+  background: var(--od-color-error);
+}
+.toneAccent .dot {
+  background: var(--od-color-accent);
+}
+.toneMuted .dot {
+  background: var(--od-color-text-muted);
+}
+.time {
+  color: var(--od-color-text-muted);
+  white-space: nowrap;
+}
+.time:focus-visible {
+  outline: 2px solid var(--od-color-accent);
+  outline-offset: 1px;
+  border-radius: var(--od-radius);
+}
+.progress {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--od-space-unit) * 1);
+  min-width: 0;
+}
+.bar {
+  flex: none;
+  width: 6em;
+  height: 0.5em;
+  accent-color: var(--od-color-accent);
+}
+.progressText {
+  color: var(--od-color-text);
+  white-space: nowrap;
+}
+.badge {
+  align-self: flex-start;
+  padding: 0 calc(var(--od-space-unit) * 0.75);
+  border: 1px solid var(--od-color-warn);
+  border-radius: var(--od-radius);
+  color: var(--od-color-text-muted);
+  font-size: 0.75em;
+  white-space: nowrap;
+}
+.errorCell {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: calc(var(--od-space-unit) * 1);
+}
+.errorText {
+  color: var(--od-color-error);
+}

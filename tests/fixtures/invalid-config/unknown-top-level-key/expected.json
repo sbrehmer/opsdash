@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 2,
+  "column": 1,
+  "path": "widgets",
+  "messageIncludes": "Unknown field \"widgets\"."
+}

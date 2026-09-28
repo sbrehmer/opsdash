@@ -1,0 +1,46 @@
+# yaml-language-server: $schema=http://localhost:4400/schema/config.v1.json
+#
+# Development environment: real (non-production) Jira, GitHub and Jenkins, short refresh intervals.
+# Secrets: copy config/env/development.env.example to config/env/development.env and fill it in.
+# Start with: pnpm start:dev
+version: 1
+
+include:
+  - dashboards/delivery.yaml
+
+defaults:
+  refreshInterval: 30s
+  cacheWindow: 15s
+  timeout: 10s
+
+theme:
+  mode: system
+
+plugins:
+  jira:
+    version: "^1.0.0"
+    settings:
+      deployment: cloud                 # cloud | datacenter
+      baseUrl: https://acme-sandbox.atlassian.net
+      email: ops-bot@acme.example       # cloud only
+      token: { env: JIRA_TOKEN }
+      projectKeys: [PROJ]
+  github:
+    version: "^1.0.0"
+    settings:
+      apiUrl: https://api.github.com/graphql      # GHES: https://github.acme.example/api/graphql
+      webUrl: https://github.com
+      token: { env: GITHUB_TOKEN }
+      defaultRepo: acme/web
+  jenkins:
+    version: "^1.0.0"
+    settings:
+      baseUrl: https://ci-dev.acme.example
+      user: ops-bot
+      token: { env: JENKINS_TOKEN }
+      pipelineTemplate: "acme/{name}"
+      defaultOwner: acme
+      mainBranch: main
+      runningRefreshInterval: 10s
+  delivery:
+    version: "^1.0.0"

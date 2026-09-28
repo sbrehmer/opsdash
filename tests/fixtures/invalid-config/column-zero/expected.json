@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 9,
+  "column": 42,
+  "path": "dashboards[0].items[0].at[0]",
+  "messageIncludes": "Columns start at 1"
+}

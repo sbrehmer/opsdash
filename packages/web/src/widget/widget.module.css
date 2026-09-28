@@ -1,0 +1,182 @@
+.frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100%;
+  background: var(--od-color-surface);
+  border: 1px solid var(--od-color-border);
+  border-radius: var(--od-radius);
+  padding: calc(var(--od-space-unit) * 3) calc(var(--od-space-unit) * 4) calc(var(--od-space-unit) * 4);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--od-space-unit) * 2);
+  min-height: 1.75rem;
+  margin-bottom: calc(var(--od-space-unit) * 2);
+}
+
+.title {
+  flex: 1;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--od-color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Controls appear only when needed: on hover or keyboard focus (FR-039). */
+.controls {
+  display: flex;
+  gap: calc(var(--od-space-unit) * 1);
+  opacity: 0;
+  transition: opacity var(--od-motion-duration) ease;
+}
+
+.frame:hover .controls,
+.frame:focus-within .controls,
+.controls[data-open="true"] {
+  opacity: 1;
+}
+
+.iconButton {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  padding: 0 calc(var(--od-space-unit) * 2);
+  border: 1px solid var(--od-color-border);
+  border-radius: calc(var(--od-radius) * 0.6);
+  background: var(--od-color-surface);
+  color: var(--od-color-text);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.iconButton:hover {
+  border-color: var(--od-color-accent);
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.state {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--od-space-unit) * 2);
+  color: var(--od-color-text-muted);
+  font-size: 0.9rem;
+}
+
+.stateError {
+  color: var(--od-color-error);
+}
+
+.stale {
+  margin-bottom: calc(var(--od-space-unit) * 2);
+  padding: calc(var(--od-space-unit) * 1) calc(var(--od-space-unit) * 2);
+  border-left: 3px solid var(--od-color-warn);
+  color: var(--od-color-text-muted);
+  font-size: 0.8rem;
+}
+
+.skeleton {
+  display: grid;
+  gap: calc(var(--od-space-unit) * 2);
+}
+
+.skeleton span {
+  height: 0.8rem;
+  border-radius: 4px;
+  background: var(--od-color-border);
+  opacity: 0.6;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.skeleton span:nth-child(2) {
+  width: 80%;
+}
+.skeleton span:nth-child(3) {
+  width: 60%;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton span {
+    animation: none;
+  }
+}
+
+.placeholder {
+  border-style: dashed;
+}
+
+.track {
+  display: grid;
+  gap: calc(var(--od-space-unit) * 2);
+  margin-bottom: calc(var(--od-space-unit) * 3);
+  padding-bottom: calc(var(--od-space-unit) * 3);
+  border-bottom: 1px solid var(--od-color-border);
+}
+
+.trackRow {
+  display: flex;
+  gap: calc(var(--od-space-unit) * 2);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: calc(var(--od-space-unit) * 1.5) calc(var(--od-space-unit) * 2);
+  border: 1px solid var(--od-color-border);
+  border-radius: calc(var(--od-radius) * 0.6);
+  background: var(--od-color-bg);
+}
+
+.tracked {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--od-space-unit) * 1.5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--od-space-unit) * 1);
+  padding: 0 0 0 calc(var(--od-space-unit) * 2);
+  border: 1px solid var(--od-color-border);
+  border-radius: 999px;
+  font-family: var(--od-font-family-mono);
+  font-size: 0.8rem;
+}
+
+.chip button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: calc(var(--od-space-unit) * 1) calc(var(--od-space-unit) * 2);
+  border-radius: 999px;
+}
+
+.message {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--od-color-error);
+}

@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 9,
+  "column": 61,
+  "path": "dashboards[0].items[0].size",
+  "messageIncludes": "Widget \"deploys\" extends to column 14; the grid has 12 columns."
+}

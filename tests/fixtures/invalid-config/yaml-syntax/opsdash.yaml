@@ -1,0 +1,7 @@
+version: 1
+plugins:
+  reference:
+    version: "^1.0.0"
+dashboards:
+  - id: main
+    title: [unclosed

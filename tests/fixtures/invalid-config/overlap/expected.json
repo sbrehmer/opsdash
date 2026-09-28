@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 10,
+  "column": 41,
+  "path": "dashboards[0].items[1].at",
+  "messageIncludes": "Widget \"b\" overlaps widget \"a\""
+}

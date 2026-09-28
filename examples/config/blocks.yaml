@@ -1,0 +1,10 @@
+blocks:
+  team-panel:
+    params:
+      title: { default: "Team" }
+    items:
+      - id: items
+        plugin: reference
+        title: "${title} items"
+        at: [1, 1]
+        size: [12, 3]

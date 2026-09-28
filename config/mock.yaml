@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=http://localhost:4400/schema/config.v1.json
+#
+# Mock environment: every plugin uses its built-in mock source. No source systems, no credentials.
+# Start with: pnpm mock
+version: 1
+
+include:
+  - dashboards/delivery.yaml
+  - dashboards/demo.yaml
+
+defaults:
+  refreshInterval: 60s
+  cacheWindow: 30s
+
+theme:
+  mode: system
+
+plugins:
+  reference:
+    version: "^1.0.0"
+  jira:
+    version: "^1.0.0"
+    settings:
+      deployment: cloud
+      baseUrl: https://jira.mock.example
+      email: mock@example.com
+      token: { env: JIRA_TOKEN }       # not read in mock mode
+      projectKeys: [PROJ]
+  github:
+    version: "^1.0.0"
+    settings:
+      webUrl: https://github.mock.example
+      token: { env: GITHUB_TOKEN }
+      defaultRepo: acme/web
+    mock:
+      scenario:
+        merged: ["acme/web#1401"]
+        changesRequested: ["acme/api#1414"]
+  jenkins:
+    version: "^1.0.0"
+    settings:
+      baseUrl: https://jenkins.mock.example
+      user: mock
+      token: { env: JENKINS_TOKEN }
+      pipelineTemplate: "acme/{name}"
+      defaultOwner: acme
+    mock:
+      scenario:
+        running: ["acme/web/PR-1400"]
+        failed: ["acme/api/PR-1407"]
+  delivery:
+    version: "^1.0.0"

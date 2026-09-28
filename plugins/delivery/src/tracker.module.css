@@ -1,0 +1,234 @@
+.root {
+  /* Shared by the add form and the table so each input sits above its column. */
+  --tracker-actions-col: 4.5rem;
+  container-type: inline-size;
+  display: grid;
+  gap: calc(var(--od-space-unit) * 2);
+  min-width: 0;
+  color: var(--od-color-text);
+}
+
+/* Add form: the same columns as the table (three equal columns plus the actions column). */
+.add {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) var(--tracker-actions-col);
+  align-items: end;
+}
+.field {
+  display: grid;
+  gap: calc(var(--od-space-unit) * 0.5);
+  min-width: 0;
+  /* Matches the table cells' horizontal padding. */
+  padding: 0 calc(var(--od-space-unit) * 1);
+}
+.add > .primary {
+  justify-self: end;
+  margin-right: calc(var(--od-space-unit) * 1);
+}
+.label {
+  font-size: 0.8125em;
+  color: var(--od-color-text-muted);
+}
+.input {
+  font: inherit;
+  color: var(--od-color-text);
+  background: var(--od-color-bg);
+  border: 1px solid var(--od-color-border);
+  border-radius: var(--od-radius);
+  padding: calc(var(--od-space-unit) * 0.75) calc(var(--od-space-unit) * 1);
+  min-width: 0;
+}
+.input:focus-visible,
+.button:focus-visible,
+.primary:focus-visible,
+.quiet:focus-visible,
+.menuButton:focus-visible,
+.menuItem:focus-visible {
+  outline: 2px solid var(--od-color-accent);
+  outline-offset: 1px;
+}
+.button,
+.primary,
+.quiet,
+.menuItem {
+  font: inherit;
+  cursor: pointer;
+  border-radius: var(--od-radius);
+  padding: calc(var(--od-space-unit) * 0.5) calc(var(--od-space-unit) * 1.25);
+}
+.button {
+  color: var(--od-color-accent);
+  background: var(--od-color-surface);
+  border: 1px solid var(--od-color-accent);
+}
+.primary {
+  color: var(--od-color-bg);
+  background: var(--od-color-accent);
+  border: 1px solid var(--od-color-accent);
+}
+.quiet {
+  color: var(--od-color-text-muted);
+  background: none;
+  border: 1px solid transparent;
+}
+.button:disabled,
+.primary:disabled,
+.quiet:disabled,
+.menuItem:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.error {
+  grid-column: 1 / -1;
+  padding: 0 calc(var(--od-space-unit) * 1);
+  margin: 0;
+  color: var(--od-color-error);
+  font-size: 0.875em;
+}
+.muted {
+  color: var(--od-color-text-muted);
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.table th,
+.table td {
+  text-align: left;
+  vertical-align: top;
+  padding: calc(var(--od-space-unit) * 1);
+  border-bottom: 1px solid var(--od-color-border);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.table thead th {
+  font-size: 0.8125em;
+  font-weight: 600;
+  color: var(--od-color-text-muted);
+}
+.table thead th:last-child {
+  width: var(--tracker-actions-col);
+}
+.table .groupHead th {
+  background: var(--od-color-surface);
+  font-weight: 600;
+}
+.repo {
+  color: var(--od-color-text);
+  font-family: var(--od-font-family-mono);
+  margin-right: calc(var(--od-space-unit) * 1.5);
+}
+.mainLink {
+  color: var(--od-color-text-muted);
+  font-weight: 400;
+}
+.groupHead .muted {
+  font-weight: 400;
+}
+.cell {
+  min-width: 0;
+}
+.actions {
+  text-align: right;
+}
+.suggest,
+.inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--od-space-unit) * 1);
+}
+
+/* Row menu */
+.menu {
+  position: relative;
+  display: inline-block;
+}
+.menuButton {
+  list-style: none;
+  cursor: pointer;
+  padding: 0 calc(var(--od-space-unit) * 1);
+  border-radius: var(--od-radius);
+  color: var(--od-color-text-muted);
+}
+.menuButton::-webkit-details-marker {
+  display: none;
+}
+.menuList {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: calc(var(--od-space-unit) * 0.5);
+  min-width: 11em;
+  background: var(--od-color-surface);
+  border: 1px solid var(--od-color-border);
+  border-radius: var(--od-radius);
+  text-align: left;
+}
+.menuItem {
+  width: 100%;
+  text-align: left;
+  color: var(--od-color-text);
+  background: none;
+  border: 0;
+}
+.menuItem:hover {
+  background: var(--od-color-bg);
+}
+
+/* Done */
+.done > summary {
+  cursor: pointer;
+  color: var(--od-color-text-muted);
+}
+
+/* Narrow widgets: rows become stacked cards (FR-025). */
+@container (max-width: 640px) {
+  .add {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .add > .primary {
+    justify-self: start;
+  }
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table th,
+  .table td {
+    display: block;
+    width: auto;
+  }
+  .row {
+    margin: calc(var(--od-space-unit) * 1) 0;
+    border: 1px solid var(--od-color-border);
+    border-radius: var(--od-radius);
+  }
+  .row td:last-child {
+    border-bottom: 0;
+  }
+  .row .cell::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.8125em;
+    color: var(--od-color-text-muted);
+  }
+  .actions {
+    text-align: left;
+  }
+  .menuList {
+    right: auto;
+    left: 0;
+  }
+}

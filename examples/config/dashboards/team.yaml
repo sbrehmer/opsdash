@@ -1,0 +1,14 @@
+dashboards:
+  - id: team
+    title: Team
+    items:
+      - id: team-b
+        use: team-panel
+        at: [1, 1]
+        size: [6, 3]
+        with: { title: "Team B" }
+      - id: team-c
+        use: team-panel
+        at: [7, 1]
+        size: [6, 3]
+        with: { title: "Team C" }

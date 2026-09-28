@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 4,
+  "column": 5,
+  "path": "theme.tokens.colour-accent",
+  "messageIncludes": "Unknown field \"colour-accent\"."
+}

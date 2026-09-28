@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output (web UI and plugins are rebuilt with `pnpm build`)
+dist/
+build/
+*.tsbuildinfo
+
+# Local data: SQLite stores created by the server, launcher and tests
+.data/
+*.db
+*.db-wal
+*.db-shm
+
+# Secrets — never commit. Templates end in .example
+.env
+.env.*
+!.env.example
+config/env/*.env
+
+# Test output
+coverage/
+test-results/
+playwright-report/
+blob-report/
+tests/.tmp/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings (the shared .claude/skills are committed)
+.claude/settings.local.json

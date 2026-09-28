@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 9,
+  "column": 81,
+  "path": "dashboards[0].items[0].settings.view",
+  "messageIncludes": "\"view\" must be one of: \"list\", \"compact\""
+}

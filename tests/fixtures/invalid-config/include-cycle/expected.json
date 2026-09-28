@@ -1,0 +1,7 @@
+{
+  "file": "b.yaml",
+  "line": 1,
+  "column": 11,
+  "path": "include[0]",
+  "messageIncludes": "Include cycle: a.yaml → b.yaml → a.yaml."
+}

@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 9,
+  "column": 26,
+  "path": "dashboards[0].items[0].plugin",
+  "messageIncludes": "Plugin \"nope\" is not configured under \"plugins\"."
+}

@@ -1,0 +1,43 @@
+{
+  "name": "opsdash",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm --filter @opsdash/web --filter \"./plugins/*\" run build",
+    "start": "node packages/host/src/main.ts",
+    "mock": "node scripts/opsdash.mjs start mock",
+    "start:dev": "node scripts/opsdash.mjs start development",
+    "start:prod": "node scripts/opsdash.mjs start production",
+    "db:setup": "node scripts/opsdash.mjs db:setup",
+    "db:status": "node scripts/opsdash.mjs db:status",
+    "db:reset": "node scripts/opsdash.mjs db:reset",
+    "config:check": "node scripts/opsdash.mjs config:check",
+    "test": "vitest run",
+    "test:config-errors": "vitest run --project contract config-errors reference-config",
+    "test:secret-scan": "vitest run --project contract secret-scan",
+    "test:e2e": "playwright test",
+    "typecheck": "pnpm -r run typecheck && tsc -p tsconfig.json",
+    "lint": "biome check .",
+    "size": "size-limit",
+    "perf:coldstart": "node scripts/coldstart.mjs",
+    "seed:delivery": "node scripts/seed-delivery.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@biomejs/biome": "^2.5.14",
+    "@opsdash/plugin-sdk": "workspace:*",
+    "@playwright/test": "^1.63.0",
+    "@size-limit/file": "^14.1.0",
+    "@types/node": "^24.0.0",
+    "@types/semver": "^7.8.0",
+    "semver": "^7.8.5",
+    "size-limit": "^14.1.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  }
+}

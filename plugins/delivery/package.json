@@ -1,0 +1,38 @@
+{
+  "name": "@opsdash/plugin-delivery",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "opsdash": {
+    "id": "delivery",
+    "apiVersion": "^1.1.0",
+    "server": "server.js",
+    "client": "client.js",
+    "capabilities": [
+      "actions"
+    ],
+    "env": [],
+    "refresh": {
+      "interval": "60s",
+      "timeout": "10s"
+    },
+    "composes": [
+      "github",
+      "jenkins",
+      "jira"
+    ]
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@opsdash/delivery-cells": "workspace:*",
+    "@opsdash/plugin-sdk": "workspace:*",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "vite": "^8.3.1"
+  }
+}

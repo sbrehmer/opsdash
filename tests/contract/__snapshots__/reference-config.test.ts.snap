@@ -1,0 +1,938 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`reference config contract (constitution quality gate) > resolved dashboards match the snapshot 1`] = `
+[
+  {
+    "errors": [],
+    "id": "overview",
+    "items": [
+      {
+        "at": [
+          1,
+          1,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "overview/open-items",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-1",
+            "ITEM-2",
+            "ITEM-3",
+          ],
+          "view": "list",
+        },
+        "size": [
+          6,
+          4,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Open items",
+        "trackable": true,
+      },
+      {
+        "at": [
+          7,
+          1,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "overview/recent",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-3",
+            "ITEM-4",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          6,
+          4,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Recently changed",
+        "trackable": true,
+      },
+      {
+        "at": [
+          1,
+          5,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "overview/watchlist",
+        "pluginId": "reference",
+        "settings": {
+          "items": [],
+          "view": "list",
+        },
+        "size": [
+          6,
+          3,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Watchlist",
+        "trackable": true,
+      },
+      {
+        "at": [
+          7,
+          5,
+        ],
+        "id": "team-a",
+        "items": [
+          {
+            "at": [
+              1,
+              1,
+            ],
+            "clientUrl": "/plugins/reference/client.js?v=N",
+            "kind": "widget",
+            "path": "overview/team-a/items",
+            "pluginId": "reference",
+            "settings": {
+              "items": [],
+              "view": "list",
+            },
+            "size": [
+              12,
+              3,
+            ],
+            "status": "ok",
+            "styleUrl": "/plugins/reference/style.css?v=N",
+            "title": "Team A items",
+            "trackable": true,
+          },
+        ],
+        "kind": "block",
+        "size": [
+          6,
+          3,
+        ],
+      },
+    ],
+    "theme": {
+      "mode": "system",
+      "tokens": {
+        "color-accent": "#3b5bdb",
+      },
+      "tokensDark": {
+        "color-accent": "#7c9cff",
+      },
+      "tokensLight": {},
+    },
+    "title": "Overview",
+  },
+  {
+    "errors": [],
+    "id": "details",
+    "items": [
+      {
+        "at": [
+          1,
+          1,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "details/everything",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-1",
+            "ITEM-2",
+            "ITEM-3",
+            "ITEM-4",
+            "ITEM-5",
+            "ITEM-6",
+          ],
+          "view": "list",
+        },
+        "size": [
+          12,
+          5,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "All tracked work",
+        "trackable": true,
+      },
+    ],
+    "theme": {
+      "mode": "dark",
+      "tokens": {
+        "color-accent": "#3b5bdb",
+      },
+      "tokensDark": {
+        "color-accent": "#7c9cff",
+      },
+      "tokensLight": {},
+    },
+    "title": "Details",
+  },
+  {
+    "errors": [],
+    "id": "team",
+    "items": [
+      {
+        "at": [
+          1,
+          1,
+        ],
+        "id": "team-b",
+        "items": [
+          {
+            "at": [
+              1,
+              1,
+            ],
+            "clientUrl": "/plugins/reference/client.js?v=N",
+            "kind": "widget",
+            "path": "team/team-b/items",
+            "pluginId": "reference",
+            "settings": {
+              "items": [],
+              "view": "list",
+            },
+            "size": [
+              12,
+              3,
+            ],
+            "status": "ok",
+            "styleUrl": "/plugins/reference/style.css?v=N",
+            "title": "Team B items",
+            "trackable": true,
+          },
+        ],
+        "kind": "block",
+        "size": [
+          6,
+          3,
+        ],
+      },
+      {
+        "at": [
+          7,
+          1,
+        ],
+        "id": "team-c",
+        "items": [
+          {
+            "at": [
+              1,
+              1,
+            ],
+            "clientUrl": "/plugins/reference/client.js?v=N",
+            "kind": "widget",
+            "path": "team/team-c/items",
+            "pluginId": "reference",
+            "settings": {
+              "items": [],
+              "view": "list",
+            },
+            "size": [
+              12,
+              3,
+            ],
+            "status": "ok",
+            "styleUrl": "/plugins/reference/style.css?v=N",
+            "title": "Team C items",
+            "trackable": true,
+          },
+        ],
+        "kind": "block",
+        "size": [
+          6,
+          3,
+        ],
+      },
+    ],
+    "theme": {
+      "mode": "system",
+      "tokens": {
+        "color-accent": "#3b5bdb",
+      },
+      "tokensDark": {
+        "color-accent": "#7c9cff",
+      },
+      "tokensLight": {},
+    },
+    "title": "Team",
+  },
+  {
+    "errors": [],
+    "id": "batching-demo",
+    "items": [
+      {
+        "at": [
+          1,
+          1,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w01",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-1",
+            "ITEM-2",
+            "ITEM-3",
+            "ITEM-4",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 1",
+        "trackable": true,
+      },
+      {
+        "at": [
+          4,
+          1,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w02",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-4",
+            "ITEM-5",
+            "ITEM-6",
+            "ITEM-7",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 2",
+        "trackable": true,
+      },
+      {
+        "at": [
+          7,
+          1,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w03",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-7",
+            "ITEM-8",
+            "ITEM-9",
+            "ITEM-10",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 3",
+        "trackable": true,
+      },
+      {
+        "at": [
+          10,
+          1,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w04",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-10",
+            "ITEM-11",
+            "ITEM-12",
+            "ITEM-13",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 4",
+        "trackable": true,
+      },
+      {
+        "at": [
+          1,
+          3,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w05",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-13",
+            "ITEM-14",
+            "ITEM-15",
+            "ITEM-16",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 5",
+        "trackable": true,
+      },
+      {
+        "at": [
+          4,
+          3,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w06",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-16",
+            "ITEM-17",
+            "ITEM-18",
+            "ITEM-19",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 6",
+        "trackable": true,
+      },
+      {
+        "at": [
+          7,
+          3,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w07",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-19",
+            "ITEM-20",
+            "ITEM-21",
+            "ITEM-22",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 7",
+        "trackable": true,
+      },
+      {
+        "at": [
+          10,
+          3,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w08",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-22",
+            "ITEM-23",
+            "ITEM-24",
+            "ITEM-25",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 8",
+        "trackable": true,
+      },
+      {
+        "at": [
+          1,
+          5,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w09",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-25",
+            "ITEM-1",
+            "ITEM-2",
+            "ITEM-3",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 9",
+        "trackable": true,
+      },
+      {
+        "at": [
+          4,
+          5,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w10",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-3",
+            "ITEM-4",
+            "ITEM-5",
+            "ITEM-6",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 10",
+        "trackable": true,
+      },
+      {
+        "at": [
+          7,
+          5,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w11",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-6",
+            "ITEM-7",
+            "ITEM-8",
+            "ITEM-9",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 11",
+        "trackable": true,
+      },
+      {
+        "at": [
+          10,
+          5,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w12",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-9",
+            "ITEM-10",
+            "ITEM-11",
+            "ITEM-12",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 12",
+        "trackable": true,
+      },
+      {
+        "at": [
+          1,
+          7,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w13",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-12",
+            "ITEM-13",
+            "ITEM-14",
+            "ITEM-15",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 13",
+        "trackable": true,
+      },
+      {
+        "at": [
+          4,
+          7,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w14",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-15",
+            "ITEM-16",
+            "ITEM-17",
+            "ITEM-18",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 14",
+        "trackable": true,
+      },
+      {
+        "at": [
+          7,
+          7,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w15",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-18",
+            "ITEM-19",
+            "ITEM-20",
+            "ITEM-21",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 15",
+        "trackable": true,
+      },
+      {
+        "at": [
+          10,
+          7,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w16",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-21",
+            "ITEM-22",
+            "ITEM-23",
+            "ITEM-24",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 16",
+        "trackable": true,
+      },
+      {
+        "at": [
+          1,
+          9,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w17",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-24",
+            "ITEM-25",
+            "ITEM-1",
+            "ITEM-2",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 17",
+        "trackable": true,
+      },
+      {
+        "at": [
+          4,
+          9,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w18",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-2",
+            "ITEM-3",
+            "ITEM-4",
+            "ITEM-5",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 18",
+        "trackable": true,
+      },
+      {
+        "at": [
+          7,
+          9,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w19",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-5",
+            "ITEM-6",
+            "ITEM-7",
+            "ITEM-8",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 19",
+        "trackable": true,
+      },
+      {
+        "at": [
+          10,
+          9,
+        ],
+        "clientUrl": "/plugins/reference/client.js?v=N",
+        "kind": "widget",
+        "path": "batching-demo/w20",
+        "pluginId": "reference",
+        "settings": {
+          "items": [
+            "ITEM-8",
+            "ITEM-9",
+            "ITEM-10",
+            "ITEM-11",
+          ],
+          "view": "compact",
+        },
+        "size": [
+          3,
+          2,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/reference/style.css?v=N",
+        "title": "Widget 20",
+        "trackable": true,
+      },
+    ],
+    "theme": {
+      "mode": "system",
+      "tokens": {
+        "color-accent": "#3b5bdb",
+      },
+      "tokensDark": {
+        "color-accent": "#7c9cff",
+      },
+      "tokensLight": {},
+    },
+    "title": "Batching demo",
+  },
+  {
+    "errors": [],
+    "id": "delivery",
+    "items": [
+      {
+        "at": [
+          1,
+          1,
+        ],
+        "clientUrl": "/plugins/delivery/client.js?v=N",
+        "kind": "widget",
+        "path": "delivery/tracker",
+        "pluginId": "delivery",
+        "settings": {
+          "retention": "7d",
+        },
+        "size": [
+          12,
+          6,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/delivery/style.css?v=N",
+        "title": "In flight",
+        "trackable": false,
+      },
+      {
+        "at": [
+          1,
+          7,
+        ],
+        "clientUrl": "/plugins/jira/client.js?v=N",
+        "kind": "widget",
+        "path": "delivery/stories",
+        "pluginId": "jira",
+        "settings": {
+          "baseUrl": "https://acme.atlassian.net",
+          "deployment": "cloud",
+          "email": "ops-bot@acme.example",
+          "projectKeys": [
+            "PROJ",
+          ],
+        },
+        "size": [
+          4,
+          4,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/jira/style.css?v=N",
+        "title": "Stories",
+        "trackable": true,
+      },
+      {
+        "at": [
+          5,
+          7,
+        ],
+        "clientUrl": "/plugins/github/client.js?v=N",
+        "kind": "widget",
+        "path": "delivery/prs",
+        "pluginId": "github",
+        "settings": {
+          "apiUrl": "https://api.github.com/graphql",
+          "defaultRepo": "acme/web",
+          "webUrl": "https://github.com",
+        },
+        "size": [
+          4,
+          4,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/github/style.css?v=N",
+        "title": "Pull requests",
+        "trackable": true,
+      },
+      {
+        "at": [
+          9,
+          7,
+        ],
+        "clientUrl": "/plugins/jenkins/client.js?v=N",
+        "kind": "widget",
+        "path": "delivery/builds",
+        "pluginId": "jenkins",
+        "settings": {
+          "baseUrl": "https://ci.acme.example",
+          "defaultOwner": "acme",
+          "mainBranch": "main",
+          "pipelineTemplate": "acme/{name}",
+          "pipelines": {},
+          "runningRefreshInterval": "10s",
+          "user": "ops-bot",
+        },
+        "size": [
+          4,
+          4,
+        ],
+        "status": "ok",
+        "styleUrl": "/plugins/jenkins/style.css?v=N",
+        "title": "Builds",
+        "trackable": true,
+      },
+    ],
+    "theme": {
+      "mode": "system",
+      "tokens": {
+        "color-accent": "#3b5bdb",
+      },
+      "tokensDark": {
+        "color-accent": "#7c9cff",
+      },
+      "tokensLight": {},
+    },
+    "title": "Delivery",
+  },
+]
+`;

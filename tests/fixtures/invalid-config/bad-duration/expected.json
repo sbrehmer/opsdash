@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 3,
+  "column": 20,
+  "path": "defaults.refreshInterval",
+  "messageIncludes": "Expected a duration"
+}

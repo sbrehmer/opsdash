@@ -1,0 +1,58 @@
+/* Design tokens (FR-037). Every token can be overridden from config: theme.tokens / tokens-light / tokens-dark. */
+:root,
+:root[data-theme="light"] {
+  --od-color-bg: #f6f7f9;
+  --od-color-surface: #ffffff;
+  --od-color-text: #1b1f24;
+  --od-color-text-muted: #57606a;
+  --od-color-border: #d8dee4;
+  --od-color-accent: #3b5bdb;
+  --od-color-ok: #1a7f37;
+  --od-color-warn: #9a6700;
+  --od-color-error: #cf222e;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --od-color-bg: #0d1117;
+  --od-color-surface: #161b22;
+  --od-color-text: #e6edf3;
+  --od-color-text-muted: #9ba3ad;
+  --od-color-border: #30363d;
+  --od-color-accent: #7c9cff;
+  --od-color-ok: #3fb950;
+  --od-color-warn: #d29922;
+  --od-color-error: #ff7b72;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    --od-color-bg: #0d1117;
+    --od-color-surface: #161b22;
+    --od-color-text: #e6edf3;
+    --od-color-text-muted: #9ba3ad;
+    --od-color-border: #30363d;
+    --od-color-accent: #7c9cff;
+    --od-color-ok: #3fb950;
+    --od-color-warn: #d29922;
+    --od-color-error: #ff7b72;
+    color-scheme: dark;
+  }
+}
+
+:root {
+  --od-font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --od-font-family-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --od-font-size-base: 15px;
+  --od-space-unit: 0.25rem;
+  --od-grid-gap: 0.75rem;
+  --od-radius: 10px;
+  --od-motion-duration: 140ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --od-motion-duration: 0ms;
+  }
+}

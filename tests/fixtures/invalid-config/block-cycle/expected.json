@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 16,
+  "column": 23,
+  "path": "blocks.two.items[0].use",
+  "messageIncludes": "Block nesting cycle: one → two → one."
+}

@@ -1,0 +1,7 @@
+{
+  "file": "more.yaml",
+  "line": 1,
+  "column": 1,
+  "path": "version",
+  "messageIncludes": "Field \"version\" is only allowed in the root file"
+}

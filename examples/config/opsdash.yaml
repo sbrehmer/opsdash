@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=http://localhost:4400/schema/config.v1.json
+version: 1
+
+include:
+  - blocks.yaml
+  - dashboards/team.yaml
+  - dashboards/batching.yaml
+  - dashboards/delivery.yaml
+
+defaults:
+  refreshInterval: 60s
+  cacheWindow: 30s
+
+theme:
+  mode: system
+  tokens:
+    color-accent: "#3b5bdb"
+  tokens-dark:
+    color-accent: "#7c9cff"
+
+plugins:
+  reference:
+    version: "^1.0.0"
+    settings:
+      apiToken: { env: REFERENCE_TOKEN }
+    mock:
+      notFound: ["ITEM-404"]
+
+  # Delivery tracker (feature 002). Works in mock mode as is; for real systems set the URLs and the
+  # JIRA_TOKEN / GITHUB_TOKEN / JENKINS_TOKEN environment variables.
+  jira:
+    version: "^1.0.0"
+    settings:
+      deployment: cloud            # cloud | datacenter
+      baseUrl: https://acme.atlassian.net
+      email: ops-bot@acme.example
+      token: { env: JIRA_TOKEN }
+      projectKeys: [PROJ]
+  github:
+    version: "^1.0.0"
+    settings:
+      apiUrl: https://api.github.com/graphql   # GHES: https://github.acme.example/api/graphql
+      webUrl: https://github.com
+      token: { env: GITHUB_TOKEN }
+      defaultRepo: acme/web
+    mock:
+      scenario:
+        merged: ["acme/web#1401"]
+        changesRequested: ["acme/api#1414"]
+  jenkins:
+    version: "^1.0.0"
+    settings:
+      baseUrl: https://ci.acme.example
+      user: ops-bot
+      token: { env: JENKINS_TOKEN }
+      pipelineTemplate: "acme/{name}"
+      defaultOwner: acme
+      mainBranch: main
+      runningRefreshInterval: 10s
+    mock:
+      scenario:
+        running: ["acme/web/PR-1400"]
+        failed: ["acme/api/PR-1407"]
+  delivery:
+    version: "^1.0.0"
+
+dashboards:
+  - id: overview
+    title: Overview
+    items:
+      - id: open-items
+        plugin: reference
+        title: Open items
+        at: [1, 1]
+        size: [6, 4]
+        settings: { items: ["ITEM-1", "ITEM-2", "ITEM-3"] }
+      - id: recent
+        plugin: reference
+        title: Recently changed
+        at: [7, 1]
+        size: [6, 4]
+        settings: { items: ["ITEM-3", "ITEM-4"], view: compact }
+      - id: watchlist
+        plugin: reference
+        title: Watchlist
+        at: [1, 5]
+        size: [6, 3]
+      - id: team-a
+        use: team-panel
+        at: [7, 5]
+        size: [6, 3]
+        with: { title: "Team A" }
+
+  - id: details
+    title: Details
+    theme: { mode: dark }
+    items:
+      - id: everything
+        plugin: reference
+        title: All tracked work
+        at: [1, 1]
+        size: [12, 5]
+        settings: { items: ["ITEM-1", "ITEM-2", "ITEM-3", "ITEM-4", "ITEM-5", "ITEM-6"] }

@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 9,
+  "column": 15,
+  "path": "dashboards[0].items[0].id",
+  "messageIncludes": "lowercase letters, digits and dashes"
+}

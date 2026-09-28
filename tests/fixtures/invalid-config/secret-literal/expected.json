@@ -1,0 +1,7 @@
+{
+  "file": "opsdash.yaml",
+  "line": 6,
+  "column": 17,
+  "path": "plugins.reference.settings.apiToken",
+  "messageIncludes": "Secrets must be referenced as { env: NAME }"
+}
